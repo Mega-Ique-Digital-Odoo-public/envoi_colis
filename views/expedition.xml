@@ -1,0 +1,68 @@
+<odoo>
+    <record id="view_expedition_tree" model="ir.ui.view">
+        <field name="name">envoi.colis.expedition.tree</field>
+        <field name="model">envoi.colis.expedition</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="expedition_id" string="ID Expédition" />
+                <field name="client_id" />
+                <field name="nombre_colis" />
+                <field name="payment_id" />
+                <field name="transport" />
+                <field name="code_securite" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_expedition_form" model="ir.ui.view">
+        <field name="name">envoi.colis.expedition.form</field>
+        <field name="model">envoi.colis.expedition</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                        <field name="state" widget="statusbar"
+                            statusbar_visible="pending,confirme" 
+                            />
+                        <button string="Prepare exepition" name="action_prepare_expedition" type="object" states="default" class="oe_highlight" />
+                        <button string="Confirmer expedition" name="action_confirme" type="object" states="pending" class="oe_highlight" />
+                </header>
+                <sheet>
+                    <group>
+
+                        <field name="expedition_id" readonly="1" />
+                        <field name="code_securite" readonly="1" />
+                        <field name="conteneur_id" readonly="1" />
+                        <field name="client_id" required="1" />
+                        <field name="nombre_colis" readonly="1" />
+                        <field name="transport" />
+                    </group>
+
+                    <field name="colis_id">
+                        <tree>
+                            <field name="colis_id" string="Colis_Id" />
+                            <field name="currency_id" widget="selection"
+                                options="{'no_create': True}" />
+                            <field name="expedition_id" string="Expédition" />
+                            <field name="expediteur" />
+                            <field name="destinataire" />
+                            <field name="poids" />
+                            <field name="volume" />
+                            <field name="contenu" />
+                            <field name="photo" />
+                            <field name="date_enregistrement" />
+                            <field name="cout" />
+                        </tree>
+                    </field>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_expedition" model="ir.actions.act_window">
+        <field name="name">Expéditions</field>
+        <field name="res_model">envoi.colis.expedition</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'create': False}</field>
+    </record>
+</odoo>

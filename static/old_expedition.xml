@@ -1,0 +1,91 @@
+<odoo>
+    <record id="view_expedition_tree" model="ir.ui.view">
+        <field name="name">envoi.colis.expedition.tree</field>
+        <field name="model">envoi.colis.expedition</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="ID Expédition"/>
+                <field name="client_id"/>
+                <field name="destinataire_nom"/>
+                <field name="nombre_colis"/>
+                <field name="cout_final"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_expedition_form" model="ir.ui.view">
+        <field name="name">envoi.colis.expedition.form</field>
+        <field name="model">envoi.colis.expedition</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_create_colis"
+                            string="Ajouter Colis"
+                            type="object"
+                            class="oe_highlight"/>
+                    <button name="action_view_colis"
+                            string="Voir Tous les Colis"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-list"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="code_securite" readonly="1"/>
+                            <field name="conteneur_id" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="client_id" required="1"/>
+                            <field name="destinataire_nom" required="1"/>
+                            <field name="destinataire_email"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Détails Financiers">
+                            <group>
+                                <field name="nombre_colis" readonly="1"/>
+                                <field name="currency_id" widget="selection" options="{'no_create': True}"/>
+                                <field name="cout_initial" readonly="1"/>
+                                <field name="remise_pourcentage"/>
+                                <field name="remise_montant"/>
+                                <field name="cout_final" readonly="1"/>
+                            </group>
+                        </page>
+
+                        <page string="Liste des Colis">
+                            <field name="colis_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                    <field name="date_enregistrement"/>
+                                    <field name="cout"/>
+                                    <control>
+                                        <create string="Ajouter un colis"/>
+                                        <delete string="Supprimer"/>
+                                    </control>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_expedition" model="ir.actions.act_window">
+        <field name="name">Expéditions</field>
+        <field name="res_model">envoi.colis.expedition</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_expedition_form" model="ir.actions.act_window">
+        <field name="name">Nouvelle Expédition</field>
+        <field name="res_model">envoi.colis.expedition</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_conteneur_id': active_id}</field>
+    </record>
+</odoo>

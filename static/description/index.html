@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargo Fusion - Advanced Parcel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Parcel Shipping Dashboard -->
+<div class="dashboard">
+    <h1>Cargo Fusion Dashboard</h1>
+    <p>Efficiently manage your consolidated shipments through this intelligent interface.</p>
+    
+    <!-- New Shipment Button -->
+    <a href="/new-shipment" class="btn">Create new shipment</a>
+    
+    <!-- Shipment Tracking -->
+    <div class="shipment-tracking">
+        <h2>Track & trace</h2>
+        <p>Monitor your consolidated cargo in real time.</p>
+        <input type="text" id="tracking-id" placeholder="Tracking number">
+        <button id="track-btn">Track shipment</button>
+    </div>
+
+    <!-- Shipment History -->
+    <div class="shipment-history">
+        <h2>Consolidation history</h2>
+        <p>Review all your grouped shipments and their status.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tracking #</th>
+                    <th>Recipient</th>
+                    <th>Status</th>
+                    <th>Shipment date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>123456789</td>
+                    <td>Eric Gomdjim Kuitche</td>
+                    <td>Delivered</td>
+                    <td>05/12/2025</td>
+                </tr>
+                <!-- Additional history rows can be added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Shipment Management -->
+    <div class="shipment-management">
+        <h2>Consolidation tools</h2>
+        <p>Add new recipients, modify shipment groups, or manage undelivered cargo.</p>
+        <a href="/add-recipient" class="btn">Add recipient</a>
+        <a href="/edit-shipment" class="btn">Modify shipment group</a>
+    </div>
+
+    <!-- Billing Section -->
+    <div class="billing">
+        <h2>Billing center</h2>
+        <p>View and download invoices for your consolidated shipments.</p>
+        <button>View invoices</button>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Cargo Fusion by Mega-Ique Digital. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

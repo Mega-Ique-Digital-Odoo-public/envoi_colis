@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_envoi_colis_conteneur,envoi.colis.conteneur,model_envoi_colis_conteneur,base.group_user,1,1,1,1
+access_envoi_colis_expedition,envoi.colis.expedition,model_envoi_colis_expedition,base.group_user,1,1,1,1
+access_envoi_colis_colis,envoi.colis.colis,model_envoi_colis_colis,base.group_user,1,1,1,1

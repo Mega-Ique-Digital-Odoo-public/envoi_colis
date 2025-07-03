@@ -1,0 +1,68 @@
+<odoo>
+    <record id="view_conteneur_tree" model="ir.ui.view">
+        <field name="name">envoi.colis.conteneur.tree</field>
+        <field name="model">envoi.colis.conteneur</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="conteneur_id" string="ID Conteneur" />
+                <field name="matricule" />
+                <field name="total_expeditions" />
+                <field name="capacite_totale" />
+                <field name="date_depart" />
+                <field name="date_arrivee" />
+                <field name="poids_disponibles" />
+                <field name="total_colis" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_conteneur_form" model="ir.ui.view">
+        <field name="name">envoi.colis.conteneur.form</field>
+        <field name="model">envoi.colis.conteneur</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                        <field name="state" widget="statusbar"
+                            statusbar_visible="prepare,expedie,transit,arrive" 
+                            />
+                        <button string="Prepare le conteneur" name="action_statut_prepare" type="object" states="default" class="oe_highlight" />
+                        <button string="Expedie le conteneur" name="action_statut_expedie" type="object" states="prepare" class="oe_highlight" />
+                        <button string="Mettre le conteneur en transit" name="action_statut_en_transit" type="object" states="expedie" class="oe_highlight" />
+                        <button string="Conteneur arrive" name="action_statut_arrive" type="object" states="transit" class="oe_highlight" />
+                        <!-- <button string="Conteneur arrive" name="action_statut_arrive" type="object" states="arrive" /> -->
+                </header>
+
+                <sheet>
+                
+                    <group>
+                        <field name="conteneur_id" readonly="1" />
+                        <field name="matricule" />
+                        <field name="currency_id" widget="selection" options="{'no_create': True}" />
+                        <field name="total_expeditions" readonly="1" />
+                        <field name="total_colis" readonly="1" />
+                        <field name="capacite_totale" />
+                        <field name="date_depart" />
+                        <field name="date_arrivee" />
+                        <field name="poids_disponibles" readonly="" />
+                        <field name="type" />
+                    </group>
+
+                    <field name="expedition_ids">
+                        <tree>
+                            <field name="expedition_id" string="ID Expédition" />
+                            <field name="client_id" />
+                            <field name="nombre_colis" />
+                            <field name="transport" />
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_conteneur" model="ir.actions.act_window">
+        <field name="name">Conteneurs</field>
+        <field name="res_model">envoi.colis.conteneur</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

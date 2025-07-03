@@ -1,0 +1,44 @@
+- realtions entre les differents modeles de donnees ?
+- dans une relation 1 a n ? => odoo specifie les deux (avec le one2Many cote 1 et many2One cote N), mais en temps normal 
+- resoudre le pb de la mise a jour de l'interface ==> il suffit de mettre a jour l'application sur l'interface
+
+- code spaghetti entre les modeles de donnees
+- onglet expedition s'affiche dans un onglet secondaire.
+- je recois un internal server error apres ajout du modele payment
+- la page ne s'affiche plus.
+
+flow : 
+    - il faut d'abord creer un conteneur et l'enregistre, avant de creer des expeditions lies a cet conteneur 
+    - high coupling entre les differents modeles 
+
+    16/05/2025
+    - il faut suivre le flow de odoo : tingle 
+        conteneur => expedition ssi conteneur => colis ou payment ssi expedition (=> relation de dependance )
+    - actuellement je cree un conteneur uniquement 
+    - la creation d'expedition donne une erreur (champ payment requis)
+
+
+propositions :
+    - pouvoir creer un colis sans contrainte, et l'assigner ensuite a une expedition : 
+        - le colis aura alors un statut 'pending'
+            a la creation et apres assignation a une expedition il aura un statut 'assigned' 
+        - la contrainte sera respectee car, un colis ne pourra etre assignee qu'a une seule expediton 
+
+    - pouvoir creerr une expedition sans contrainte :
+        - l'expedition aura un statut a sa creation
+        - il pourra avoir autant de colis que possible, jusqu'au depart 
+
+    - creer un conteneur, et lui assigner des expeditions (dans le flow actuel, le conteneur se cree dans contrainte majeure)
+
+TAF :
+    - un bouton pour generer une facturation, surement un recapitulatif de tout, en format pdf 
+    - faire les headers qui affichent le satut de suivi d'une expediton, style facturation dans odoo 
+    - quand le conteneur est valide, il faut generer une facturation directement
+
+- Tenir compte des anciens payments, lors de l'enregistrement d'un nouveau payment 
+- les ids ne s'affichent pas correctement
+- apres validation du conteneur => creer une facture, generation du bon 
+
+object.expedition_ids.client_id.email or
+
+24, 23, 33, 34, 25, 26, 27, 28, 29, 30, 31,32,35

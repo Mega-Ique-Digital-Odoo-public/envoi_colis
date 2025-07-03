@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_envoi_colis_root" name="Envoi Colis"/>
+    <menuitem id="menu_conteneurs" name="Conteneurs" parent="menu_envoi_colis_root" action="action_conteneur"/>
+    <menuitem id="menu_colis" name="Colis" parent="menu_envoi_colis_root" action="action_colis"/>
+    <menuitem id="menu_expedition" name="Expeditions" parent="menu_envoi_colis_root" action="action_expedition"/>
+</odoo>
