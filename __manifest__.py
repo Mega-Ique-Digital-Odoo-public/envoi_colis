@@ -1,6 +1,6 @@
 {
     'name': 'Envoi Colis',
-    'version': '1.0',
+    'version': '15.0.1.0.0',
     'summary': 'Gestion des envois de colis par conteneurs',
     'description': """
         Module de gestion d'envoi de colis via des conteneurs
@@ -20,4 +20,6 @@
     'installable': True,
     'application': True,
     'auto_install': False,
+    'website': 'https://megaique.de | https://megaique.net',
+    'license': 'AGPL-3',
 }
